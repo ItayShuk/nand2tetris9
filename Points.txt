@@ -1,0 +1,18 @@
+Class Points{
+
+    field x;
+    field y;
+
+    Constructor Points(int p_x, int p_y){
+        let x = x;
+        let y = y;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+}

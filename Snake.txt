@@ -1,23 +1,51 @@
 Class Snake{
+    // represents the head of the snake
+    field int xHead;
+    field int yHead;
+    field Array body;
+    field int size;
+    field int direction;
 
-    method void moveUp{
+    Constructor Snake(int x, int y){
+        let xHead = x;
+        let yHead = y;
+        let body = new Array(1)
+        let body[0] = new Points(x,y)
+        return this;
+    }
+
+    method void moveUp(){
 
     }
 
-    method void moveDown{
+    method void moveDown(){
 
     }
 
-    method void moveLeft{
+    method void moveLeft(){
 
     }
 
-    method void moveRight{
+    method void moveRight(){
 
     }
 
-    method void incSize{
+    method void incSize(){
+        var Array new_body;
+        let new_body = new Array (size+1);
+        let i = 0;
+        while (i < length) {
+            let new_body[i] = body[i];
+            let i = i + 1;
+        new_body[i+1] = new Points(x+direction.getX(),y+direction.getY())
+        body = new_body;
+    }
 
+    method int getXHead(){
+        return xHead;
+    }
+    method int getYHead(){
+        return yHead;
     }
 
 }
