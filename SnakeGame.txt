@@ -7,10 +7,6 @@ Class SnakeGame{
     field int right;
 
 
-
-
-
-
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     Constructor SnakeGame()
     {
