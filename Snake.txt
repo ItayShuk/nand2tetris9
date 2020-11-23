@@ -34,10 +34,10 @@ Class Snake{
         var Array new_body;
         let new_body = new Array (size+1);
         let i = 0;
+        new_body[0] = new Points(xHead+direction.getX(),yHead+direction.getY())
         while (i < length) {
-            let new_body[i] = body[i];
+            let new_body[i+1] = body[i];
             let i = i + 1;
-        new_body[i+1] = new Points(x+direction.getX(),y+direction.getY())
         body = new_body;
     }
 
