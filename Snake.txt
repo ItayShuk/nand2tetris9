@@ -11,6 +11,7 @@ Class Snake{
         let yHead = y;
         let body = new Array(1)
         let body[0] = new Points(x,y)
+        let size = 3;
         return this;
     }
 
@@ -39,15 +40,15 @@ Class Snake{
             let new_body[i+1] = body[i];
             let i = i + 1;
         let body = new_body;
+        let size = size+1;
         let xHead = body[0].getX()
         let yHead = body[0].getY()
     }
 
     method void move(){
-        var Point former;
         var Points new_head;
         var Array new_body;
-        let new_body = new Array (size+1);
+        let new_body = new Array (size);
         let new_head = new Point(xHead+direction.getX(),yHead+direction.getY())
         let i = 0;
         let new_body[0] = new_head;
