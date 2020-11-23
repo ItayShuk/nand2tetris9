@@ -82,4 +82,8 @@ Class Snake{
         return body;
     }
 
+    method Points getDirection(){
+        return direction;
+    }
+
 }

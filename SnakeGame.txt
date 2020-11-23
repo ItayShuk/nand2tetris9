@@ -46,25 +46,11 @@ Class SnakeGame{
                 snake.getDirection().setX(1);
                 snake.getDirection().setY(0);
             }
-
-            snake_move();
+            checkIfSnakeAte();
+            snake.move();
         }
         return;
     }
-
-    method void snake_move(){
-        if (direction = right ){
-            snake.moveRight()
-        }
-        if (direction = left ){
-            snake.moveLeft()
-        }
-        if (direction = up ){
-            snake.moveUp()
-        }
-        if (direction = down ){
-            snake.moveDown()
-        }
 
     }
 
@@ -75,9 +61,7 @@ Class SnakeGame{
             do snake.incSize();
             do makeFood();
         }
-        else{
-            do snake.move();
-        }
+        return;
     }
 
     /** checks if the player lost */
