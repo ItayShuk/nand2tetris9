@@ -1,0 +1,23 @@
+Class Snake{
+
+    method void moveUp{
+
+    }
+
+    method void moveDown{
+
+    }
+
+    method void moveLeft{
+
+    }
+
+    method void moveRight{
+
+    }
+
+    method void incSize{
+
+    }
+
+}
