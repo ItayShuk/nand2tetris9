@@ -38,7 +38,25 @@ Class Snake{
         while (i < length) {
             let new_body[i+1] = body[i];
             let i = i + 1;
-        body = new_body;
+        let body = new_body;
+        let xHead = body[0].getX()
+        let yHead = body[0].getY()
+    }
+
+    method void move(){
+        var Point former;
+        var Points new_head;
+        var Array new_body;
+        let new_body = new Array (size+1);
+        let new_head = new Point(xHead+direction.getX(),yHead+direction.getY())
+        let i = 0;
+        let new_body[i] = new_head;
+        while (i<size-1){
+            let new_body[i+1] = body[i]
+        }
+        let body = new_body;
+        let xHead = body[0].getX()
+        let yHead = body[0].getY()
     }
 
     method int getXHead(){

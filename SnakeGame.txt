@@ -19,6 +19,9 @@ Class SnakeGame{
             snake.incSize();
             makeFood();
         }
+        else{
+            snake.move();
+        }
     }
 
     /** checks if the player lost */
