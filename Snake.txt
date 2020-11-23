@@ -4,14 +4,15 @@ Class Snake{
     field int yHead;
     field Array body;
     field int size;
-    field int direction;
+    field Points direction;
 
     Constructor Snake(int x, int y){
         let xHead = x;
         let yHead = y;
-        let body = new Array(1)
-        let body[0] = new Points(x,y)
+        let body = new Array(1);
+        let body[0] = new Points(x,y);
         let size = 3;
+        let direction = Points.new(1,0);
         return this;
     }
 
@@ -28,36 +29,36 @@ Class Snake{
     }
 
     method void moveRight(){
-        let direction = new Points(1,0);
+        let direction = Points.new(1,0);
     }
 
     method void incSize(){
         var Array new_body;
-        let new_body = new Array (size+1);
+        let new_body = Array.new (size+1);
         let i = 0;
-        new_body[0] = new Points(xHead+direction.getX(),yHead+direction.getY())
+        new_body[0] = Points.new(xHead+direction.getX(),yHead+direction.getY());
         while (i < length) {
             let new_body[i+1] = body[i];
             let i = i + 1;
         let body = new_body;
         let size = size+1;
-        let xHead = body[0].getX()
-        let yHead = body[0].getY()
+        let xHead = body[0].getX();
+        let yHead = body[0].getY();
     }
 
     method void move(){
         var Points new_head;
         var Array new_body;
-        let new_body = new Array (size);
-        let new_head = new Point(xHead+direction.getX(),yHead+direction.getY())
+        let new_body =  Array.new (size);
+        let new_head = Points.new(xHead+direction.getX(),yHead+direction.getY());
         let i = 0;
         let new_body[0] = new_head;
         while (i<size-1){
-            let new_body[i+1] = body[i]
+            let new_body[i+1] = body[i];
         }
         let body = new_body;
-        let xHead = body[0].getX()
-        let yHead = body[0].getY()
+        let xHead = body[0].getX();
+        let yHead = body[0].getY();
     }
 
     method boolean collision(){
