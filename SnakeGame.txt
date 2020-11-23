@@ -6,6 +6,11 @@ Class SnakeGame{
     field int width;
     field int right;
 
+
+
+
+
+
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     Constructor SnakeGame()
     {
@@ -28,6 +33,7 @@ Class SnakeGame{
         if (direction = down ){
             snake.moveDown()
         }
+
     }
 
     /** checks if the snake ate the current food on the screen */
