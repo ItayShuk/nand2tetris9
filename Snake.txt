@@ -4,7 +4,7 @@ Class Snake{
     field int yHead;
     field Array body;
     field int size;
-    field int direction;
+    field Points direction;
 
     Constructor Snake(int x, int y){
         let xHead = x;
