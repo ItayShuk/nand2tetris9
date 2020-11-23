@@ -93,6 +93,6 @@ Class SnakeGame{
     method void makeFood(){
         do food.erase();
         do food.dispose();
-        let food = Food.new(snake.get_body())
+        let food = Food.new(snake)
     }
 }

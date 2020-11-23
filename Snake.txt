@@ -86,4 +86,8 @@ Class Snake{
         return direction;
     }
 
+    method int get_size(){
+        return size;
+    }
+
 }
