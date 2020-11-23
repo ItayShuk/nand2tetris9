@@ -14,18 +14,7 @@ Class Food{
         while (valid = 0){
             let x = random(4,cols-4);
             let y = random(4,rows-4);
-            let i = i+1;
-            if ~(x<length & y< width){
-                while (~(x<length & y< width)){
-                    if (x>length){
-                        let x = x/2;
-                    }
-                    if (y>width){
-                        let y = y/2;
-                    }
-                }
-            }
-            if (body_check(x,y,body){
+            if (body_check(x,y,body)){
                     let valid = 1;
             }
         }
@@ -73,4 +62,7 @@ Class Food{
         return;
     }
 
+    method boolean body_check(int x,int y,Array body){
+        let i = 0;
+    }
 }
