@@ -78,4 +78,8 @@ Class Snake{
         return yHead;
     }
 
+    method Array get_body(){
+        return body;
+    }
+
 }

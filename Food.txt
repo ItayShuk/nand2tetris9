@@ -1,0 +1,57 @@
+Class Food{
+
+    field int x;
+    field int y;
+
+    /** constructor of the class, gets the coordinates of where to draw the foo */
+    Constructor Food new(Array body){
+        let valid = 0;
+        let i = 0;
+        while (valid = 0){
+            let x = random(body[i].getX(),body[i+1].getX()
+        }
+        do draw();
+        return this;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method int random(int a, int b) {
+        var int d;
+        var int r;
+        let d = Math.divide(a,b);
+        let r = a - (b * d);
+        return Math.abs(r);
+    }
+
+    /** draws the food to the screen*/
+    method void draw(){
+        var int size;
+        let size = 8;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+    /** erases the food from the screen */
+    method void erase(){
+        var int size;
+        let size = 8;
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+    /** disposes of the Food object */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+}

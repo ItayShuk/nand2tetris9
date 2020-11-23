@@ -57,7 +57,6 @@ Class SnakeGame{
     method void makeFood(){
         do food.erase();
         do food.dispose();
-        let food = Food.new(x, y)// the x and y will be at a random position on the screen where the body of the snake is not there
-                             // the snake body should be saved in a list in the Snake class
+        let food = Food.new(snake.get_body())
     }
 }
