@@ -36,11 +36,11 @@ Class SnakeGame{
     method void checkIfSnakeAte(){
         if ( snake.getXHead() = food.getX() & snake.getYHead() = food.getY()
         {
-            snake.incSize();
-            makeFood();
+            do snake.incSize();
+            do makeFood();
         }
         else{
-            snake.move();
+            do snake.move();
         }
     }
 
@@ -55,9 +55,9 @@ Class SnakeGame{
 
     /** makes a new food object on the screen */
     method void makeFood(){
-        food.erase();
-        food.dispose();
-        food = Food.new(x, y)// the x and y will be at a random position on the screen where the body of the snake is not there
+        do food.erase();
+        do food.dispose();
+        let food = Food.new(x, y)// the x and y will be at a random position on the screen where the body of the snake is not there
                              // the snake body should be saved in a list in the Snake class
     }
 }
