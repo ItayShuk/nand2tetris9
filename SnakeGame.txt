@@ -52,25 +52,9 @@ Class SnakeGame{
         return;
     }
 
-    method void snake_move(){
-        if (direction = right ){
-            snake.moveRight()
-        }
-        if (direction = left ){
-            snake.moveLeft()
-        }
-        if (direction = up ){
-            snake.moveUp()
-        }
-        if (direction = down ){
-            snake.moveDown()
-        }
-
-    }
-
     /** checks if the snake ate the current food on the screen */
     method void checkIfSnakeAte(){
-        if ( snake.getXHead() = food.getX() & snake.getYHead() = food.getY()
+        if ( snake.getHead.getX() = food.getX() & snake.getHead.getY() = food.getY())
         {
             do snake.incSize();
             do makeFood();
@@ -82,10 +66,14 @@ Class SnakeGame{
 
     /** checks if the player lost */
     method boolean checkIfLost(){
-        if (snake.getXHead()>width | snake.getXHead()>height):
+        if (snake.getHead.getX() > width | snake.getHead.getX() > height)
+        {
             return true;
-        if (snake.getYHead()>width | snake.getYHead()>height):
+        }
+        if (snake.getHead.getY() > width | snake.getHead.getY() > height)
+        {
             return true;
+        }
         return snake.collision()
     }
 

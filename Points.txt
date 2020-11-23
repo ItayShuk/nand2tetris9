@@ -25,4 +25,9 @@ Class Points{
         let y = num;
         return;
     }
+
+    method void dispose(){
+    do Memory.deAlloc(this);
+    return;
+    }
 }
