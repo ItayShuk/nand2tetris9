@@ -15,4 +15,14 @@ Class Points{
     method int getY(){
         return y;
     }
+
+    method void setX(int num){
+        let x = num;
+        return;
+    }
+
+    method void setY(int num){
+        let y = num;
+        return;
+    }
 }

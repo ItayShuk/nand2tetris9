@@ -16,6 +16,42 @@ Class SnakeGame{
         return this;
     }
 
+    method void runSnake(){
+        var char key;
+        var boolean exit;
+        let exit = false;
+
+        while (~exit & checkIfLost())
+        {
+            let key = Keyboard.keyPressed();
+
+            if (key = 81) {let exit = true}; // q is pressed
+            if (key = 131) // move up
+            {
+                snake.getDirection().setX(0);
+                snake.getDirection().setY(1);
+            }
+            if (key = 133) // move down
+            {
+                snake.getDirection().setX(0);
+                snake.getDirection().setY(-1);
+            }
+            if (key = 130) // move left
+            {
+                snake.getDirection().setX(-1);
+                snake.getDirection().setY(0);
+            }
+            if (key = 132) // move right
+            {
+                snake.getDirection().setX(1);
+                snake.getDirection().setY(0);
+            }
+
+            snake_move();
+        }
+        return;
+    }
+
     method void snake_move(){
         if (direction = right ){
             snake.moveRight()
