@@ -50,13 +50,23 @@ Class Snake{
         let new_body = new Array (size+1);
         let new_head = new Point(xHead+direction.getX(),yHead+direction.getY())
         let i = 0;
-        let new_body[i] = new_head;
+        let new_body[0] = new_head;
         while (i<size-1){
             let new_body[i+1] = body[i]
         }
         let body = new_body;
         let xHead = body[0].getX()
         let yHead = body[0].getY()
+    }
+
+    method boolean collision(){
+        let i = 1;
+        while (i<size){
+            if (body[0].getX = body[i].getX & body[0].getY = body[i].getY){
+                return true;
+            }
+        }
+        return false;
     }
 
     method int getXHead(){

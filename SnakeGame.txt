@@ -2,6 +2,8 @@ Class SnakeGame{
 
     field Snake snake;
     field Food food;
+    field int height;
+    field int width;
 
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     Constructor SnakeGame()
@@ -26,7 +28,11 @@ Class SnakeGame{
 
     /** checks if the player lost */
     method boolean checkIfLost(){
-
+        if (snake.getXHead()>width | snake.getXHead()>height):
+            return true;
+        if (snake.getYHead()>width | snake.getYHead()>height):
+            return true;
+        return snake.collision()
     }
 
     /** makes a new food object on the screen */
