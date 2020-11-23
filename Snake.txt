@@ -16,19 +16,19 @@ Class Snake{
     }
 
     method void moveUp(){
-
+        let direction = new Points(0,1);
     }
 
     method void moveDown(){
-
+        let direction = new Points(0,-1);
     }
 
     method void moveLeft(){
-
+        let direction = new Points(-1,0);
     }
 
     method void moveRight(){
-
+        let direction = new Points(1,0);
     }
 
     method void incSize(){

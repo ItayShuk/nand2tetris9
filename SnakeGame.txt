@@ -4,6 +4,7 @@ Class SnakeGame{
     field Food food;
     field int height;
     field int width;
+    field int right;
 
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     Constructor SnakeGame()
@@ -12,6 +13,21 @@ Class SnakeGame{
         let snake = Snake.new(5, 5);
         let food = Food.new(30, 30);
         return this;
+    }
+
+    method void snake_move(){
+        if (direction = right ){
+            snake.moveRight()
+        }
+        if (direction = left ){
+            snake.moveLeft()
+        }
+        if (direction = up ){
+            snake.moveUp()
+        }
+        if (direction = down ){
+            snake.moveDown()
+        }
     }
 
     /** checks if the snake ate the current food on the screen */
