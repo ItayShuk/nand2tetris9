@@ -1,4 +1,4 @@
-Class Snake{
+class Snake{
     // represents the head of the snake
     field Points head;
     field Array body;
@@ -8,8 +8,7 @@ Class Snake{
 
 
     /** constructor of the Snake class, given default direction and size*/
-    Constructor Snake(){
-    }
+    constructor Snake new(){
         let head = Points.new(250, 125);
         let body = Array.new(1);
         let body[0] = head;
@@ -86,6 +85,8 @@ Class Snake{
         let i = 0;
         while (i < size)
         {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(body[i].getX(), body[i].getY(), body[i].getX() + snake_rec, body[i].getY() + snake_rec);
             body[i].dispose();
             let i = i + 1;
         }
@@ -94,17 +95,21 @@ Class Snake{
             do Memory.deAlloc(body);
             do direction.dispose();
             do Memory.deAlloc(this);
-
         }
         return;
     }
+
     /** draws the body of the snake on the screen*/
     method void draw(){
         let i = 0;
         while (i<size){
             do Screen.setColor(true);
-            do Screen.drawRectangle(body[i].getX, body[i].getY, body[i].getX + snake_rec, body[i].getY + snake_rec);
+            do Screen.drawRectangle(body[i].getX(), body[i].getY(), body[i].getX() + snake_rec, body[i].getY() + snake_rec);
         }
         return;
+    }
+
+    method Points body_ind(int i){
+        return body[i];
     }
 }

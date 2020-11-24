@@ -1,4 +1,4 @@
-Class SnakeGame{
+class SnakeGame{
 
     field Snake snake;
     field Food food;
@@ -8,7 +8,7 @@ Class SnakeGame{
 
 
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
-    Constructor SnakeGame()
+    constructor SnakeGame new()
     {
         // put random starting positions for the starting point of the snake and the food
         let snake = Snake.new(5, 5);

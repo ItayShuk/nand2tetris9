@@ -1,16 +1,15 @@
-Class Food{
+class Food{
 
     field int x;
     field int y;
     field int cols;
     field int rows;
+    field int valid;
 
-    /** constructor of the class, gets the coordinates of where to draw the foo */
-    Constructor Food new(Snake snake){
+    constructor Food new(Snake snake){
         let cols = 512;
         let rows = 256;
         let valid = 0;
-        let i = 0;
         while (valid = 0){
             let x = random(4,cols-4);
             let y = random(4,rows-4);
@@ -63,10 +62,11 @@ Class Food{
     }
 
     method boolean body_check(int x,int y,Snake snake){
+        var int i;
         let i = 0;
         while(i<snake.get_size()){
-            if (x+4>snake.get_body()[i].getX() & x-4<snake.get_body()[i].getX()){
-                if (y+4>snake.get_body()[i].getY() & y-4<snake.get_body()[i].getY()){
+            if ((x+4>snake.body_ind(i).getX()) & (x-4<snake.body_ind(i).getX())){
+                if (y+4>snake.body_ind(i).getY() & y-4<snake.body_ind(i).getY()){
                     return false;
                 }
             }
