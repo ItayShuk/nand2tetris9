@@ -15,7 +15,7 @@ Class SnakeGame{
         let food = Food.new(30, 30);
         return this;
     }
-
+    /** the function that runs the game */
     method void runSnake(){
         var char key;
         var boolean exit;
@@ -86,5 +86,12 @@ Class SnakeGame{
         do food.erase();
         do food.dispose();
         let food = Food.new(snake)
+    }
+    /** recycles the memory used by this class */
+    method void dispose(){
+        snake.dispose(true);
+        food.dispose();
+        do Memory.deAlloc(this);
+        return;
     }
 }

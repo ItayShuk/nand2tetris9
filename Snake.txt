@@ -7,7 +7,7 @@ Class Snake{
     field int snake_rec;
 
 
-
+    /** constructor of the Snake class, given default direction and size*/
     Constructor Snake(){
     }
         let head = Points.new(250, 125);
@@ -18,7 +18,7 @@ Class Snake{
         let direction = Points.new(1,0);
         return this;
     }
-
+    /** increases the snake size in the case the snake ate food */
     method void incSize(){
         var Array new_body;
         var int i;
@@ -30,13 +30,13 @@ Class Snake{
             let new_body[i+1] = body[i];
             let i = i + 1;
          }
-        disposeBody();
+        disposeBody(false);
         let body = new_body;
         let size = size+1;
         let head = body[0];
 
     }
-
+    /** method that moves the snake at the current direction*/
     method void move(){
         var Points new_head;
         var Array new_body;
@@ -48,11 +48,11 @@ Class Snake{
         while (i<size-1){
             let new_body[i+1] = body[i];
         }
-        disposeBody();
+        disposeBody(false);
         let body = new_body;
         let head = new_body[0];
     }
-
+    /** method that checks if the snake had a collision with himself */
     method boolean collision(){
         var int i;
         let i = 1;
@@ -65,33 +65,40 @@ Class Snake{
         }
         return false;
     }
-
+    /** returns the head of the snake */
     method Points getHead(){
         return head;
     }
-
+    /** returns the body of the snake */
     method Array get_body(){
         return body;
     }
-
+    /** returns the direction of the snake */
     method Points getDirection(){
         return direction;
     }
-
+    /** returns the size of the snake */
     method int get_size(){
         return size;
     }
-
-    method void disposeBody(){
+    /** disposes of the snakes body */
+    method void disposeBody(boolean gameEnded){
         let i = 0;
         while (i < size)
         {
             body[i].dispose();
             let i = i + 1;
         }
+        if (gameEnded = true)
+        {
+            do Memory.deAlloc(body);
+            do direction.dispose();
+            do Memory.deAlloc(this);
+
+        }
         return;
     }
-
+    /** draws the body of the snake on the screen*/
     method void draw(){
         let i = 0;
         while (i<size){
