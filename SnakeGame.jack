@@ -1,0 +1,108 @@
+class SnakeGame{
+
+    field Snake snake;
+    field Food food;
+    field int height;
+    field int width;
+    field int right;
+
+
+    /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
+    constructor SnakeGame new()
+    {
+        // put random starting positions for the starting point of the snake and the food
+        let snake = Snake.new();
+        let food = Food.new(snake);
+        let height = 255;
+        let width = 511;
+        return this;
+    }
+    /** the function that runs the game */
+    method void runSnake(){
+        var char key;
+        var boolean exit;
+        var Points direction;
+        let exit = false;
+
+        while ((~exit) & checkIfLost())
+        {
+            do snake.draw();
+            do food.draw();
+            do Sys.wait(100);
+            let direction = snake.getDirection();
+            let key = Keyboard.keyPressed();
+
+            if (key = 81) // q is pressed
+             {
+             let exit = true;
+             }
+
+            if ((key = 131) & (~(direction.getX() = 0))) // move up
+            {
+                do direction.setX(0);
+                do direction.setY(-1);
+            }
+            if ((key = 133) & (~(direction.getX() = 0))) // move down
+            {
+                do direction.setX(0);
+                do direction.setY(1);
+            }
+            if ((key = 130) & (~(direction.getY() = 0))) // move left
+            {
+                do direction.setX(-1);
+                do direction.setY(0);
+            }
+            if ((key = 132) & (~(direction.getY() = 0))) // move right
+            {
+                do direction.setX(1);
+                do direction.setY(0);
+            }
+
+            do checkIfSnakeAte();
+            do snake.move();
+        }
+        return;
+    }
+
+    /** checks if the snake ate the current food on the screen */
+    method void checkIfSnakeAte(){
+        var Points head;
+        let head = snake.getHead();
+        if ( (head.getX() = food.getX()) & (head.getY() = food.getY()))
+        {
+            do snake.incSize();
+            do makeFood();
+        }
+        return;
+    }
+
+    /** checks if the player lost */
+    method boolean checkIfLost(){
+        var Points head;
+        let head = snake.getHead();
+        if ((head.getX() > (width-8)) | (head.getX() < 0))
+        {
+            return true;
+        }
+        if ((head.getY() > (height-8)) | (head.getY() < 0))
+        {
+            return true;
+        }
+        return snake.collision();
+    }
+
+    /** makes a new food object on the screen */
+    method void makeFood(){
+        do food.erase();
+        do food.dispose();
+        let food = Food.new(snake);
+        return;
+    }
+    /** recycles the memory used by this class */
+    method void dispose(){
+        do snake.disposeBody();
+        do food.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}
