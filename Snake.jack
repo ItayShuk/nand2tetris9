@@ -18,6 +18,7 @@ class Snake{
         let direction = Points.new(1,0);
         return this;
     }
+
     /** increases the snake size in the case the snake ate food */
     method void incSize(){
         var Array new_body;

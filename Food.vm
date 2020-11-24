@@ -15,13 +15,13 @@ eq
 not
 if-goto WHILE_END0
 push pointer 0
-push constant 20
-push constant 100
+push constant 10
+push constant 300
 call Food.random 3
 pop this 0
 push pointer 0
-push constant 20
-push constant 100
+push constant 10
+push constant 300
 call Food.random 3
 pop this 1
 push pointer 0

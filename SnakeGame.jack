@@ -23,11 +23,10 @@ class SnakeGame{
         var boolean exit;
         var Points direction;
         let exit = false;
-
+        do food.draw();
         while ((~exit) & checkIfLost())
         {
             do snake.draw();
-            do food.draw();
             do Sys.wait(100);
             let direction = snake.getDirection();
             let key = Keyboard.keyPressed();
@@ -68,10 +67,12 @@ class SnakeGame{
     method void checkIfSnakeAte(){
         var Points head;
         let head = snake.getHead();
-        if ( (head.getX() = food.getX()) & (head.getY() = food.getY()))
-        {
-            do snake.incSize();
-            do makeFood();
+        if ( ((head.getX()-5) < food.getX()) & ((head.getX()+15) > food.getX())){
+            if ( ((head.getY()-5) < food.getY()) & ((head.getY()+15) > food.getY()))
+            {
+                do snake.incSize();
+                do makeFood();
+            }
         }
         return;
     }

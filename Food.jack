@@ -11,8 +11,8 @@ class Food{
         let rows = 255;
         let valid = 0;
         while (valid = 0){
-            let x = random(20,100);
-            let y = random(20,100);
+            let x = random(10,300);
+            let y = random(10,300);
             if (body_check(x,y,snake)){
                     let valid = 1;
             }
