@@ -13,6 +13,8 @@ class SnakeGame{
         // put random starting positions for the starting point of the snake and the food
         let snake = Snake.new();
         let food = Food.new(snake);
+        let height = 255;
+        let width = 511;
         return this;
     }
     /** the function that runs the game */
@@ -70,9 +72,6 @@ class SnakeGame{
         {
             do snake.incSize();
             do makeFood();
-        }
-        else{
-            do snake.move();
         }
         return;
     }

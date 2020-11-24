@@ -7,12 +7,12 @@ class Food{
     field int valid;
 
     constructor Food new(Snake snake){
-        let cols = 512;
-        let rows = 256;
+        let cols = 511;
+        let rows = 255;
         let valid = 0;
         while (valid = 0){
-            let x = random(4,cols-4);
-            let y = random(4,rows-4);
+            let x = random(20,100);
+            let y = random(20,100);
             if (body_check(x,y,snake)){
                     let valid = 1;
             }
