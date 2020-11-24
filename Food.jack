@@ -7,12 +7,17 @@ class Food{
     field int valid;
 
     constructor Food new(Snake snake){
+        var int snake_size;
+        let snake_size = snake.get_size();
+        while (snake_size> 10){
+            let snake_size = snake_size/2;
+        }
         let cols = 511;
         let rows = 255;
         let valid = 0;
         while (valid = 0){
-            let x = random(10,300);
-            let y = random(10,300);
+            let x = random((15*(snake_size+3)),450);
+            let y = random((15*snake_size),200);
             if (body_check(x,y,snake)){
                     let valid = 1;
             }

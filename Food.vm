@@ -1,27 +1,48 @@
-function Food.new 0
+function Food.new 1
 push constant 5
 call Memory.alloc 1
 pop pointer 0
+push argument 0
+call Snake.get_size 1
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 10
+gt
+not
+if-goto WHILE_END0
+push local 0
+push constant 2
+call Math.divide 2
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
 push constant 511
 pop this 2
 push constant 255
 pop this 3
 push constant 0
 pop this 4
-label WHILE_EXP0
+label WHILE_EXP1
 push this 4
 push constant 0
 eq
 not
-if-goto WHILE_END0
+if-goto WHILE_END1
 push pointer 0
-push constant 10
-push constant 300
+push constant 15
+push local 0
+push constant 3
+add
+call Math.multiply 2
+push constant 450
 call Food.random 3
 pop this 0
 push pointer 0
-push constant 10
-push constant 300
+push constant 15
+push local 0
+call Math.multiply 2
+push constant 200
 call Food.random 3
 pop this 1
 push pointer 0
@@ -35,8 +56,8 @@ label IF_TRUE0
 push constant 1
 pop this 4
 label IF_FALSE0
-goto WHILE_EXP0
-label WHILE_END0
+goto WHILE_EXP1
+label WHILE_END1
 push pointer 0
 return
 function Food.getX 0

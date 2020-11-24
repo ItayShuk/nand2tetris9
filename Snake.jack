@@ -107,7 +107,6 @@ class Snake{
         }
         do direction.dispose();
         do Memory.deAlloc(this);
-
         return;
     }
 
