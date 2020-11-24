@@ -4,16 +4,17 @@ Class Snake{
     field Array body;
     field int size;
     field Points direction;
+    field int snake_rec;
 
 
 
     Constructor Snake(){
-
     }
         let head = Points.new(250, 125);
         let body = Array.new(1);
         let body[0] = head;
         let size = 3;
+        let snake_rec = 8
         let direction = Points.new(1,0);
         return this;
     }
@@ -56,7 +57,7 @@ Class Snake{
         var int i;
         let i = 1;
         while (i<size){
-            if (body[0].getX() = body[i].getX() & body[0].getY() = body[i].getY())
+            if (head.getX() = body[i].getX() & head.getY() = body[i].getY())
             {
                 return true;
             }
@@ -91,4 +92,12 @@ Class Snake{
         return;
     }
 
+    method void draw(){
+        let i = 0;
+        while (i<size){
+            do Screen.setColor(true);
+            do Screen.drawRectangle(body[i].getX, body[i].getY, body[i].getX + snake_rec, body[i].getY + snake_rec);
+        }
+        return;
+    }
 }

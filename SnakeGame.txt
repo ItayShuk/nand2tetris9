@@ -66,11 +66,11 @@ Class SnakeGame{
 
     /** checks if the player lost */
     method boolean checkIfLost(){
-        if (snake.getHead.getX() > width | snake.getHead.getX() > height)
+        if (snake.getHead.getX() > width-8 | snake.getHead.getX() < 0)
         {
             return true;
         }
-        if (snake.getHead.getY() > width | snake.getHead.getY() > height)
+        if (snake.getHead.getY() > height-8 | snake.getHead.getY() < 0)
         {
             return true;
         }
