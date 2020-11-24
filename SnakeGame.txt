@@ -25,23 +25,27 @@ Class SnakeGame{
         {
             let key = Keyboard.keyPressed();
 
-            if (key = 81) {let exit = true}; // q is pressed
-            if (key = 131) // move up
+            if (key = 81) // q is pressed
+             {
+             let exit = true;
+             }
+
+            if (key = 131 & ~(snake.getDirection().getX() = 0)) // move up
             {
                 snake.getDirection().setX(0);
                 snake.getDirection().setY(1);
             }
-            if (key = 133) // move down
+            if (key = 133 & ~(snake.getDirection().getX() = 0)) // move down
             {
                 snake.getDirection().setX(0);
                 snake.getDirection().setY(-1);
             }
-            if (key = 130) // move left
+            if (key = 130 & ~(snake.getDirection().getY() = 0)) // move left
             {
                 snake.getDirection().setX(-1);
                 snake.getDirection().setY(0);
             }
-            if (key = 132) // move right
+            if (key = 132 & ~(snake.getDirection().getY() = 0)) // move right
             {
                 snake.getDirection().setX(1);
                 snake.getDirection().setY(0);

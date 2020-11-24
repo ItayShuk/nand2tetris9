@@ -13,7 +13,7 @@ Class Snake{
         let head = Points.new(250, 125);
         let body = Array.new(1);
         let body[0] = head;
-        let size = 3;
+        let size = 1;
         let snake_rec = 8
         let direction = Points.new(1,0);
         return this;
