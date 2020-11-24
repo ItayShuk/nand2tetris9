@@ -24,6 +24,9 @@ class SnakeGame{
 
         while (~exit & checkIfLost())
         {
+            do snake.draw();
+            do food.draw();
+            do Sys.wait(100);
             let direction = snake.getDirection();
             let key = Keyboard.keyPressed();
 
