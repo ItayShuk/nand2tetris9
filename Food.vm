@@ -32,7 +32,7 @@ if-goto WHILE_END1
 push pointer 0
 push constant 15
 push local 0
-push constant 3
+push constant 6
 add
 call Math.multiply 2
 push constant 450
