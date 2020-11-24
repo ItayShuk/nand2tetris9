@@ -11,18 +11,20 @@ class SnakeGame{
     constructor SnakeGame new()
     {
         // put random starting positions for the starting point of the snake and the food
-        let snake = Snake.new(5, 5);
-        let food = Food.new(30, 30);
+        let snake = Snake.new();
+        let food = Food.new(snake);
         return this;
     }
     /** the function that runs the game */
     method void runSnake(){
         var char key;
         var boolean exit;
+        var Points direction;
         let exit = false;
 
         while (~exit & checkIfLost())
         {
+            let direction = snake.getDirection();
             let key = Keyboard.keyPressed();
 
             if (key = 81) // q is pressed
@@ -30,35 +32,38 @@ class SnakeGame{
              let exit = true;
              }
 
-            if (key = 131 & ~(snake.getDirection().getX() = 0)) // move up
+            if ((key = 131) & (~(direction.getX() = 0))) // move up
             {
-                snake.getDirection().setX(0);
-                snake.getDirection().setY(1);
+                do direction.setX(0);
+                do direction.setY(1);
             }
-            if (key = 133 & ~(snake.getDirection().getX() = 0)) // move down
+            if ((key = 133) & (~(direction.getX() = 0))) // move down
             {
-                snake.getDirection().setX(0);
-                snake.getDirection().setY(-1);
+                do direction.setX(0);
+                do direction.setY(-1);
             }
-            if (key = 130 & ~(snake.getDirection().getY() = 0)) // move left
+            if ((key = 130) & (~(direction.getY() = 0))) // move left
             {
-                snake.getDirection().setX(-1);
-                snake.getDirection().setY(0);
+                do direction.setX(-1);
+                do direction.setY(0);
             }
-            if (key = 132 & ~(snake.getDirection().getY() = 0)) // move right
+            if ((key = 132) & (~(direction.getY() = 0))) // move right
             {
-                snake.getDirection().setX(1);
-                snake.getDirection().setY(0);
+                do direction.setX(1);
+                do direction.setY(0);
             }
-            checkIfSnakeAte();
-            snake.move();
+            do snake.set_direction(direction);
+            do checkIfSnakeAte();
+            do snake.move();
         }
         return;
     }
 
     /** checks if the snake ate the current food on the screen */
     method void checkIfSnakeAte(){
-        if ( snake.getHead.getX() = food.getX() & snake.getHead.getY() = food.getY())
+        var Points head;
+        let head = snake.getHead();
+        if ( head.getX() = food.getX() & head.getY() = food.getY())
         {
             do snake.incSize();
             do makeFood();
@@ -66,31 +71,35 @@ class SnakeGame{
         else{
             do snake.move();
         }
+        return;
     }
 
     /** checks if the player lost */
     method boolean checkIfLost(){
-        if (snake.getHead.getX() > width-8 | snake.getHead.getX() < 0)
+        var Points head;
+        let head = snake.getHead();
+        if (head.getX() > width-8 | head.getX() < 0)
         {
             return true;
         }
-        if (snake.getHead.getY() > height-8 | snake.getHead.getY() < 0)
+        if (head.getY() > height-8 | head.getY() < 0)
         {
             return true;
         }
-        return snake.collision()
+        return snake.collision();
     }
 
     /** makes a new food object on the screen */
     method void makeFood(){
         do food.erase();
         do food.dispose();
-        let food = Food.new(snake)
+        let food = Food.new(snake);
+        return;
     }
     /** recycles the memory used by this class */
     method void dispose(){
-        snake.dispose(true);
-        food.dispose();
+        do snake.disposeBody(true);
+        do food.dispose();
         do Memory.deAlloc(this);
         return;
     }

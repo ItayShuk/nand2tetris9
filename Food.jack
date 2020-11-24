@@ -63,13 +63,16 @@ class Food{
 
     method boolean body_check(int x,int y,Snake snake){
         var int i;
+        var Points current;
         let i = 0;
         while(i<snake.get_size()){
-            if ((x+4>snake.body_ind(i).getX()) & (x-4<snake.body_ind(i).getX())){
-                if (y+4>snake.body_ind(i).getY() & y-4<snake.body_ind(i).getY()){
+            let current = snake.body_ind(i);
+            if ((x+4> current.getX()) & (x-4<current.getX())){
+                if ((y+4>current.getY()) & (y-4<current.getY())){
                     return false;
                 }
             }
+            let i = i+1;
         }
         return true;
     }

@@ -13,7 +13,7 @@ class Snake{
         let body = Array.new(1);
         let body[0] = head;
         let size = 1;
-        let snake_rec = 8
+        let snake_rec = 8;
         let direction = Points.new(1,0);
         return this;
     }
@@ -23,40 +23,44 @@ class Snake{
         var int i;
         let i = 0;
         let new_body = Array.new(size+1);
-        new_body[0] = Points.new(head.getX()+direction.getX(),head.getY()+direction.getY());
-        while (i < length)
+        let new_body[0] = Points.new(head.getX()+direction.getX(),head.getY()+direction.getY());
+        while (i < size)
          {
             let new_body[i+1] = body[i];
             let i = i + 1;
          }
-        disposeBody(false);
+        do disposeBody(false);
         let body = new_body;
         let size = size+1;
         let head = body[0];
-
+        return;
     }
+
     /** method that moves the snake at the current direction*/
     method void move(){
         var Points new_head;
         var Array new_body;
+        var int i;
         let new_body =  Array.new(size);
         let new_head = Points.new(head.getX() + direction.getX(), head.getY() + direction.getY());
-        var int i;
         let i = 0;
         let new_body[0] = new_head;
         while (i<size-1){
             let new_body[i+1] = body[i];
         }
-        disposeBody(false);
+        do disposeBody(false);
         let body = new_body;
         let head = new_body[0];
+        return;
     }
     /** method that checks if the snake had a collision with himself */
     method boolean collision(){
         var int i;
+        var Points current;
         let i = 1;
         while (i<size){
-            if (head.getX() = body[i].getX() & head.getY() = body[i].getY())
+            let current = body[i];
+            if ((head.getX() = current.getX()) & (head.getY() = current.getY()))
             {
                 return true;
             }
@@ -82,15 +86,18 @@ class Snake{
     }
     /** disposes of the snakes body */
     method void disposeBody(boolean gameEnded){
+        var int i;
+        var Points current;
         let i = 0;
         while (i < size)
         {
+            let current = body[i];
             do Screen.setColor(false);
-            do Screen.drawRectangle(body[i].getX(), body[i].getY(), body[i].getX() + snake_rec, body[i].getY() + snake_rec);
-            body[i].dispose();
+            do Screen.drawRectangle(current.getX(), current.getY(), current.getX() + snake_rec, current.getY() + snake_rec);
+            do current.dispose();
             let i = i + 1;
         }
-        if (gameEnded = true)
+        if (gameEnded)
         {
             do Memory.deAlloc(body);
             do direction.dispose();
@@ -101,15 +108,25 @@ class Snake{
 
     /** draws the body of the snake on the screen*/
     method void draw(){
+        var int i;
+        var Points current;
         let i = 0;
         while (i<size){
+            let current = body[i];
             do Screen.setColor(true);
-            do Screen.drawRectangle(body[i].getX(), body[i].getY(), body[i].getX() + snake_rec, body[i].getY() + snake_rec);
+            do Screen.drawRectangle(current.getX(), current.getY(), current.getX() + snake_rec, current.getY() + snake_rec);
+            let i = i+1;
         }
         return;
     }
 
     method Points body_ind(int i){
         return body[i];
+    }
+
+    method void set_direction(Points d){
+        do direction.dispose();
+        let direction = d;
+        return;
     }
 }
