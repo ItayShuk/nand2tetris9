@@ -5,6 +5,8 @@ Class Snake{
     field int size;
     field Points direction;
 
+
+
     Constructor Snake(){
 
     }
