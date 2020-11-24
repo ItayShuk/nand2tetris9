@@ -1,6 +1,6 @@
-class main{
+class Main{
 
-    function void main(){
+    function void Main(){
         var SnakeGame game;
         let game = SnakeGame.new();
         do game.runSnake();
