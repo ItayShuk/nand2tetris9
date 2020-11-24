@@ -50,7 +50,7 @@ class Snake{
         let tailX = tail.getX();
         let tailY = tail.getY();
         let new_body =  Array.new(size);
-        let new_head = Points.new((head.getX() + direction.getX()), (head.getY() + direction.getY()));
+        let new_head = Points.new((head.getX() + (direction.getX()*10)), (head.getY() + (direction.getY()*10)));
         let i = 0;
         let new_body[0] = new_head;
         while (i<(size-1)){
