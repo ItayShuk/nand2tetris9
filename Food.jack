@@ -17,7 +17,6 @@ class Food{
                     let valid = 1;
             }
         }
-        do draw();
         return this;
     }
 
@@ -67,8 +66,8 @@ class Food{
         let i = 0;
         while(i<snake.get_size()){
             let current = snake.body_ind(i);
-            if ((x+4> current.getX()) & (x-4<current.getX())){
-                if ((y+4>current.getY()) & (y-4<current.getY())){
+            if (((x+4)> current.getX()) & ((x-4)<current.getX())){
+                if (((y+4)>current.getY()) & ((y-4)<current.getY())){
                     return false;
                 }
             }

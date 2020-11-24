@@ -45,7 +45,7 @@ class Snake{
         let new_head = Points.new(head.getX() + direction.getX(), head.getY() + direction.getY());
         let i = 0;
         let new_body[0] = new_head;
-        while (i<size-1){
+        while (i<(size-1)){
             let new_body[i+1] = body[i];
         }
         do disposeBody(false);
@@ -62,11 +62,11 @@ class Snake{
             let current = body[i];
             if ((head.getX() = current.getX()) & (head.getY() = current.getY()))
             {
-                return true;
+                return false;
             }
             let i = i + 1;
         }
-        return false;
+        return true;
     }
     /** returns the head of the snake */
     method Points getHead(){

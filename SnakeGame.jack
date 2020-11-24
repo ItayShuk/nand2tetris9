@@ -24,7 +24,7 @@ class SnakeGame{
         var Points direction;
         let exit = false;
 
-        while (~exit & checkIfLost())
+        while ((~exit) & checkIfLost())
         {
             do snake.draw();
             do food.draw();
@@ -68,7 +68,7 @@ class SnakeGame{
     method void checkIfSnakeAte(){
         var Points head;
         let head = snake.getHead();
-        if ( head.getX() = food.getX() & head.getY() = food.getY())
+        if ( (head.getX() = food.getX()) & (head.getY() = food.getY()))
         {
             do snake.incSize();
             do makeFood();
@@ -80,11 +80,11 @@ class SnakeGame{
     method boolean checkIfLost(){
         var Points head;
         let head = snake.getHead();
-        if (head.getX() > width-8 | head.getX() < 0)
+        if ((head.getX() > (width-8)) | (head.getX() < 0))
         {
             return true;
         }
-        if (head.getY() > height-8 | head.getY() < 0)
+        if ((head.getY() > (height-8)) | (head.getY() < 0))
         {
             return true;
         }
