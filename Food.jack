@@ -41,7 +41,7 @@ class Food{
         var int size;
         let size = 8;
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, x + size, y + size);
+        do Screen.drawRectangle(x, y, (x + size), (y + size));
         return;
     }
 

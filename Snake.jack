@@ -5,6 +5,7 @@ class Snake{
     field int size;
     field Points direction;
     field int snake_rec;
+    field int snake_rec;
 
 
     /** constructor of the Snake class, given default direction and size*/
@@ -60,9 +61,11 @@ class Snake{
         let i = 1;
         while (i<size){
             let current = body[i];
-            if ((head.getX() = current.getX()) & (head.getY() = current.getY()))
-            {
-                return false;
+            if ((head.getX() = current.getX()) & (head.getY() = current.getY())){
+                if ((head.getX() = current.getX()) & (head.getY() = current.getY()))
+                {
+                    return false;
+                }
             }
             let i = i + 1;
         }
@@ -93,8 +96,7 @@ class Snake{
         {
             let current = body[i];
             do Screen.setColor(false);
-            do Screen.drawRectangle(current.getX(), current.getY(), current.getX() + snake_rec, current.getY() + snake_rec);
-            do current.dispose();
+            do Screen.drawRectangle(current.getX(), current.getY(), (current.getX() + 4), (current.getY() + 4));
             let i = i + 1;
         }
         if (gameEnded)
@@ -114,7 +116,7 @@ class Snake{
         while (i<size){
             let current = body[i];
             do Screen.setColor(true);
-            do Screen.drawRectangle(current.getX(), current.getY(), current.getX() + snake_rec, current.getY() + snake_rec);
+            do Screen.drawRectangle(current.getX(), current.getY(), (current.getX() + 4), (current.getY() + 4));
             let i = i+1;
         }
         return;
