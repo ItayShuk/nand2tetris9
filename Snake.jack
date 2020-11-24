@@ -96,9 +96,14 @@ class Snake{
     }
     /** disposes of the snakes body */
     method void disposeBody(){
-
-
-        do Memory.deAlloc(body);
+        var Points current;
+        var int i;
+        let i = 0;
+        while ( i < size){
+            let current = body[i];
+            do current.dispose();
+            let i = i + 1;
+        }
         do direction.dispose();
         do Memory.deAlloc(this);
 

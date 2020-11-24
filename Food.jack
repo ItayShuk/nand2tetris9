@@ -1,0 +1,79 @@
+class Food{
+
+    field int x;
+    field int y;
+    field int cols;
+    field int rows;
+    field int valid;
+
+    constructor Food new(Snake snake){
+        let cols = 511;
+        let rows = 255;
+        let valid = 0;
+        while (valid = 0){
+            let x = random(20,100);
+            let y = random(20,100);
+            if (body_check(x,y,snake)){
+                    let valid = 1;
+            }
+        }
+        return this;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method int random(int a, int b) {
+        var int d;
+        var int r;
+        let d = Math.divide(a,b);
+        let r = a - (b * d);
+        return Math.abs(r);
+    }
+
+    /** draws the food to the screen*/
+    method void draw(){
+        var int size;
+        let size = 8;
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+    /** erases the food from the screen */
+    method void erase(){
+        var int size;
+        let size = 8;
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + size, y + size);
+        return;
+    }
+
+    /** disposes of the Food object */
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method boolean body_check(int x,int y,Snake snake){
+        var int i;
+        var Points current;
+        let i = 0;
+        while(i<snake.get_size()){
+            let current = snake.body_ind(i);
+            if (((x+4)> current.getX()) & ((x-4)<current.getX()))
+            {
+                if (((y+4)>current.getY()) & ((y-4)<current.getY())){
+                    return false;
+                }
+            }
+            let i = i+1;
+        }
+        return true;
+    }
+}
