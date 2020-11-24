@@ -24,7 +24,7 @@ class Snake{
         var int i;
         let i = 0;
         let new_body = Array.new(size+1);
-        let new_body[0] = Points.new(head.getX()+direction.getX(),head.getY()+direction.getY());
+        let new_body[0] = Points.new((head.getX()+direction.getX()),(head.getY()+direction.getY()));
         while (i < size)
          {
             let new_body[i+1] = body[i];
@@ -39,19 +39,18 @@ class Snake{
 
     /** method that moves the snake at the current direction*/
     method void move(){
-        var Points new_head;
+        var Points temp;
         var Array new_body;
         var int i;
-        let new_body =  Array.new(size);
-        let new_head = Points.new(head.getX() + direction.getX(), head.getY() + direction.getY());
+        let new_body = Array.new(size);
         let i = 0;
-        let new_body[0] = new_head;
         while (i<(size-1)){
             let new_body[i+1] = body[i];
         }
-        do disposeBody(false);
+        do head.setX(head.getX() + direction.getX());
+        do head.setY(head.getY() + direction.getY());
+        let new_body[0]=head;
         let body = new_body;
-        let head = new_body[0];
         return;
     }
     /** method that checks if the snake had a collision with himself */
@@ -96,9 +95,10 @@ class Snake{
         {
             let current = body[i];
             do Screen.setColor(false);
-            do Screen.drawRectangle(current.getX(), current.getY(), (current.getX() + 4), (current.getY() + 4));
+            do Screen.drawRectangle(50, 50, 60, 60);
             let i = i + 1;
         }
+
         if (gameEnded)
         {
             do Memory.deAlloc(body);
@@ -112,11 +112,15 @@ class Snake{
     method void draw(){
         var int i;
         var Points current;
+        var int x;
+        var int y;
         let i = 0;
         while (i<size){
             let current = body[i];
+            let x = current.getX();
+            let y = current.getY();
             do Screen.setColor(true);
-            do Screen.drawRectangle(current.getX(), current.getY(), (current.getX() + 4), (current.getY() + 4));
+            do Screen.drawRectangle(head.getX(), 4, 60+i, 60+i);
             let i = i+1;
         }
         return;
