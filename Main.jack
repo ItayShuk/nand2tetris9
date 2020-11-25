@@ -4,7 +4,18 @@ class Main{
         var SnakeGame game;
         let game = SnakeGame.new();
         do game.runSnake();
+        do Main.endScreen(game);
         do game.dispose();
+        return;
+    }
+
+    function void endScreen(SnakeGame game){
+        do Screen.clearScreen();
+        do Output.moveCursor(8,30);
+        do Output.printString("GAME OVER!");
+        do Output.moveCursor(10,30);
+        do Output.printString("SCORE: ");
+        do Output.printInt(game.getScore());
         return;
     }
 }

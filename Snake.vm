@@ -228,6 +228,7 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 0
+not
 return
 label IF_FALSE0
 push local 0
@@ -237,7 +238,6 @@ pop local 0
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
-not
 return
 function Snake.getHead 0
 push argument 0

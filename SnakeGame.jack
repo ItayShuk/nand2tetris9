@@ -5,12 +5,13 @@ class SnakeGame{
     field int height;
     field int width;
     field int right;
+    field int score;
 
 
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     constructor SnakeGame new()
     {
-        // put random starting positions for the starting point of the snake and the food
+        let score = 0;
         let snake = Snake.new();
         let food = Food.new(snake);
         let height = 255;
@@ -21,9 +22,11 @@ class SnakeGame{
     method void runSnake(){
         var char key;
         var boolean exit;
+        var boolean checkLost;
         var Points direction;
+        let checkLost = false;
         let exit = false;
-        while ((~exit) & checkIfLost())
+        while ((~exit) & (~checkLost))
         {
             do snake.draw();
             do food.draw();
@@ -56,9 +59,9 @@ class SnakeGame{
                 do direction.setX(1);
                 do direction.setY(0);
             }
-
             do checkIfSnakeAte();
             do snake.move();
+            let checkLost = checkIfLost();
         }
         return;
     }
@@ -70,6 +73,7 @@ class SnakeGame{
         if ( ((head.getX()-10) < food.getX()) & ((head.getX()+5) > food.getX())){
             if ( ((head.getY()-10) < food.getY()) & ((head.getY()+5) > food.getY()))
             {
+                let score = score + 10;
                 do snake.incSize();
                 do makeFood();
             }
@@ -105,5 +109,9 @@ class SnakeGame{
         do food.dispose();
         do Memory.deAlloc(this);
         return;
+    }
+
+    method int getScore(){
+        return score;
     }
 }

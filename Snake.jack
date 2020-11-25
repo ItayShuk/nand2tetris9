@@ -73,11 +73,11 @@ class Snake{
             let current = body[i];
             if ((head.getX() = current.getX()) & (head.getY() = current.getY()))
             {
-                return false;
+                return true;
             }
             let i = i + 1;
         }
-        return true;
+        return false;
     }
     /** returns the head of the snake */
     method Points getHead(){
