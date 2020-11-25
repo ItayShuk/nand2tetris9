@@ -58,7 +58,7 @@ class Snake{
             let new_body[i+1] = body[i];
             let i = i + 1;
         }
-
+        do body.dispose();
         let body = new_body;
         let head = new_body[0];
         do eraseTail(tailX, tailY);
