@@ -11,9 +11,9 @@ class Main{
 
     function void endScreen(SnakeGame game){
         do Screen.clearScreen();
-        do Output.moveCursor(8,30);
-        do Output.printString("GAME OVER!");
         do Output.moveCursor(10,30);
+        do Output.printString("GAME OVER!");
+        do Output.moveCursor(12,30);
         do Output.printString("SCORE: ");
         do Output.printInt(game.getScore());
         return;

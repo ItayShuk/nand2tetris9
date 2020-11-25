@@ -1,49 +1,176 @@
-function Food.new 1
-push constant 5
+function Food.new 0
+push constant 7
 call Memory.alloc 1
 pop pointer 0
-push argument 0
-call Snake.get_size 1
-pop local 0
-label WHILE_EXP0
-push local 0
-push constant 10
-gt
-not
-if-goto WHILE_END0
-push local 0
-push constant 2
-call Math.divide 2
-pop local 0
-goto WHILE_EXP0
-label WHILE_END0
-push constant 511
-pop this 2
-push constant 255
-pop this 3
+push constant 3
+pop this 0
+push constant 7
+pop this 1
+push argument 1
+pop this 5
 push constant 0
 pop this 4
-label WHILE_EXP1
-push this 4
+push constant 16
+call Array.new 1
+pop this 6
 push constant 0
-eq
-not
-if-goto WHILE_END1
-push pointer 0
-push constant 15
-push local 0
-push constant 6
+push this 6
 add
-call Math.multiply 2
-push constant 450
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 6
+add
+push constant 32
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 6
+add
+push constant 64
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 6
+add
+push constant 96
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push this 6
+add
+push constant 128
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push this 6
+add
+push constant 160
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push this 6
+add
+push constant 192
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push this 6
+add
+push constant 224
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+push this 6
+add
+push constant 256
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 9
+push this 6
+add
+push constant 288
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 10
+push this 6
+add
+push constant 320
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 11
+push this 6
+add
+push constant 352
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 12
+push this 6
+add
+push constant 384
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 13
+push this 6
+add
+push constant 416
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 14
+push this 6
+add
+push constant 448
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 15
+push this 6
+add
+push constant 480
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label WHILE_EXP0
+push this 4
+not
+not
+if-goto WHILE_END0
+push pointer 0
+push this 0
+push this 5
+sub
+push constant 32261
+add
+push constant 16
 call Food.random 3
+push this 6
+add
+pop pointer 1
+push that 0
 pop this 0
 push pointer 0
-push constant 15
-push local 0
-call Math.multiply 2
-push constant 200
+push this 1
+push this 5
+sub
+push constant 32537
+add
+push constant 8
 call Food.random 3
+push this 6
+add
+pop pointer 1
+push that 0
 pop this 1
 push pointer 0
 push this 0
@@ -53,11 +180,16 @@ call Food.body_check 4
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 1
+push constant 0
+not
 pop this 4
 label IF_FALSE0
-goto WHILE_EXP1
-label WHILE_END1
+push this 5
+push constant 10
+add
+pop this 5
+goto WHILE_EXP0
+label WHILE_END0
 push pointer 0
 return
 function Food.getX 0
@@ -130,6 +262,9 @@ return
 function Food.dispose 0
 push argument 0
 pop pointer 0
+push this 6
+call Array.dispose 1
+pop temp 0
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0

@@ -6,14 +6,16 @@ class SnakeGame{
     field int width;
     field int right;
     field int score;
+    field int random;
 
 
     /** constructor of the snake game, starts a Snake and Food objects at default starting positions */
     constructor SnakeGame new()
     {
         let score = 0;
+        let random = 0;
         let snake = Snake.new();
-        let food = Food.new(snake);
+        let food = Food.new(snake, random);
         let height = 255;
         let width = 511;
         return this;
@@ -74,6 +76,7 @@ class SnakeGame{
             if ( ((head.getY()-10) < food.getY()) & ((head.getY()+5) > food.getY()))
             {
                 let score = score + 10;
+                let random = random + 10;
                 do snake.incSize();
                 do makeFood();
             }
@@ -100,7 +103,7 @@ class SnakeGame{
     method void makeFood(){
         do food.erase();
         do food.dispose();
-        let food = Food.new(snake);
+        let food = Food.new(snake, random);
         return;
     }
     /** recycles the memory used by this class */

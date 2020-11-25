@@ -4,24 +4,42 @@ class Food{
     field int y;
     field int cols;
     field int rows;
-    field int valid;
+    field boolean valid;
+    field int randomFactor;
+    field Array foodIndex;
 
-    constructor Food new(Snake snake){
-        var int snake_size;
-        let snake_size = snake.get_size();
-        while (snake_size> 10){
-            let snake_size = snake_size/2;
-        }
-        let cols = 511;
-        let rows = 255;
-        let valid = 0;
-        while (valid = 0){
-            let x = random((15*(snake_size+6)),450);
-            let y = random((15*snake_size),200);
-            if (body_check(x,y,snake)){
-                    let valid = 1;
-            }
-        }
+    constructor Food new(Snake snake, int random){
+        let x = 3;
+        let y = 7;
+		let randomFactor = random;
+        let valid = false;
+
+		let foodIndex = Array.new(16);
+		let foodIndex[0] = 0;
+		let foodIndex[1] = 32;
+		let foodIndex[2] = 64;
+		let foodIndex[3] = 96;
+		let foodIndex[4] = 128;
+		let foodIndex[5] = 160;
+		let foodIndex[6] = 192;
+		let foodIndex[7] = 224;
+		let foodIndex[8] = 256;
+		let foodIndex[9] = 288;
+		let foodIndex[10] = 320;
+		let foodIndex[11] = 352;
+		let foodIndex[12] = 384;
+		let foodIndex[13] = 416;
+		let foodIndex[14] = 448;
+		let foodIndex[15] = 480;
+		while (~valid){
+		    let x = foodIndex[random((x - randomFactor + 32261),16)];
+		    let y = foodIndex[random((y - randomFactor + 32537),8)];
+		    if(body_check(x, y, snake))
+		    {
+		        let valid = true;
+		    }
+		    let randomFactor = randomFactor + 10;
+		}
         return this;
     }
 
@@ -61,6 +79,7 @@ class Food{
 
     /** disposes of the Food object */
     method void dispose(){
+        do foodIndex.dispose();
         do Memory.deAlloc(this);
         return;
     }
